@@ -1,6 +1,6 @@
 {
   "name": "Kin Lane - Report",
-  "description": "This is a project I came up with during my travels, allowing anyone to report any thought while in the TSA line.",
+  "description": "This is a project I came up with during my travels, allowing anyone to report any thought while in the TSA line. It started with me wanting a central place to record my experiences while going through the TSA line, but then I thought--everyone else needs a place to vent as well. I have no expectations of it becoming anything, more of an exercise than an actual application, but who knows, maybe someone will use and we'll gather some interesting insights about this ubiquitous layer of many of our lives while traveling in the U.S.",
   "image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-tsa-report.png",
   "tags": [
     "application programming interface",
