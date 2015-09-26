@@ -1,9 +1,9 @@
 <?php
-$route = '/url/:url_id/tags/';
-$app->post($route, function ($url_id)  use ($app){
+$route = '/report/:report_id/tags/';
+$app->post($route, function ($report_id)  use ($app){
 
 	$host = $_SERVER['HTTP_HOST'];
-	$url_id = prepareIdIn($url_id,$host);
+	$report_id = prepareIdIn($report_id,$host);
 
 	$ReturnObject = array();
 
@@ -14,12 +14,12 @@ $app->post($route, function ($url_id)  use ($app){
 		{
 		$tag = trim(mysql_real_escape_string($param['tag']));
 
-		$CheckTagQuery = "SELECT Tag_ID FROM tags where Tag = '" . $tag . "'";
+		$CheckTagQuery = "SELECT tag_id FROM tags where tag = '" . $tag . "'";
 		$CheckTagResults = mysql_query($CheckTagQuery) or die('Query failed: ' . mysql_error());
 		if($CheckTagResults && mysql_num_rows($CheckTagResults))
 			{
 			$Tag = mysql_fetch_assoc($CheckTagResults);
-			$tag_id = $Tag['Tag_ID'];
+			$tag_id = $Tag['tag_id'];
 			}
 		else
 			{
@@ -28,7 +28,7 @@ $app->post($route, function ($url_id)  use ($app){
 			$tag_id = mysql_insert_id();
 			}
 
-		$CheckTagPivotQuery = "SELECT * FROM url_tag_pivot where tag_id = " . trim($tag_id) . " AND url_id = " . trim($url_id);
+		$CheckTagPivotQuery = "SELECT * FROM report_tag_pivot where tag_id = " . trim($tag_id) . " AND report_id = " . trim($report_id);
 		$CheckTagPivotResult = mysql_query($CheckTagPivotQuery) or die('Query failed: ' . mysql_error());
 
 		if($CheckTagPivotResult && mysql_num_rows($CheckTagPivotResult))
@@ -37,7 +37,7 @@ $app->post($route, function ($url_id)  use ($app){
 			}
 		else
 			{
-			$query = "INSERT INTO url_tag_pivot(tag_id,url_id) VALUES(" . $tag_id . "," . $url_id . "); ";
+			$query = "INSERT INTO report_tag_pivot(tag_id,report_id) VALUES(" . $tag_id . "," . $report_id . "); ";
 			mysql_query($query) or die('Query failed: ' . mysql_error());
 			}
 
@@ -46,7 +46,7 @@ $app->post($route, function ($url_id)  use ($app){
 		$F = array();
 		$F['tag_id'] = $tag_id;
 		$F['tag'] = $tag;
-		$F['url_count'] = 0;
+		$F['report_count'] = 0;
 
 		array_push($ReturnObject, $F);
 
