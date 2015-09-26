@@ -1,0 +1,61 @@
+{
+  "name": "Kin Lane - report",
+  "description": "This is a project I came up with during my travels, allowing anyone to report any thought while in the TSA line.",
+  "image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-tsa-report.png",
+  "tags": [
+    "application programming interface",
+    "API",
+    "report"
+  ],
+  "created": "2015-09-25",
+  "modified": "2015-09-25",
+  "report": "http://developer.tsa.report/apis.json",
+  "SpecificationVersion": "0.14",
+  "apis": [
+    {
+      "name": "TSA.Report",
+      "description": "The API for TSA.Report",
+      "image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-tsa-report.png",
+      "humanURL": "http://developer.tsa.report",
+      "baseURL": "http://api.tsa.report",
+      "tags": [
+        "API",
+        "Application Programming Interface",
+        "TSA"
+      ],
+      "properties": [
+        {
+          "type": "Swagger",
+          "report": "http://developer.tsa.report/swagger.json"
+        },
+        {
+          "type": "Blueprint",
+          "report": "http://developer.tsa.report/tsareport.apib"
+        },
+        {
+          "type": "x-postman",
+          "report": "http://developer.tsa.report/postman.json"
+        },
+        {
+          "type": "x-api-science",
+          "report": "http://developer.tsa.report/status/"
+        }
+      ],
+      "contact": [
+        {
+          "FN": "API Evangliest",
+          "email": "info@apievangelist.com",
+          "X-twitter": "apievangelist"
+        }
+      ]
+    }
+  ],
+  "include": [],
+  "maintainers": [
+    {
+      "FN": "API Evangliest",
+      "X-twitter": "apievangelist",
+      "email": "info@apievangelist.com"
+    }
+  ]
+}

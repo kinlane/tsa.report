@@ -1,0 +1,611 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "",
+    "title": "Low Hanging Fruit",
+    "description": "This is a project I am developing for identifying the low hanging fruit when it comes to deploying APIs at government agencies and institutions.",
+    "license": {
+      "name": "MIT",
+      "url": "http://github.com/gruntjs/grunt/blob/master/LICENSE-MIT"
+    }
+  },
+  "host": "low.hanging.fruit.api.apievangelist.com",
+  "basePath": "/",
+  "securityDefinitions": {
+    "appid": {
+      "type": "apiKey",
+      "name": "appid",
+      "in": "query"
+    },
+    "appkey": {
+      "type": "apiKey",
+      "name": "appkey",
+      "in": "query"
+    }
+  },
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/url/": {
+      "get": {
+        "description": "all urls",
+        "tags": [
+          "url"
+        ],
+        "operationId": "geturls",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "appid",
+            "in": "query",
+            "required": true,
+            "x-is-map": false,
+            "type": "string",
+            "description": "your appid for accessing the url"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "required": true,
+            "x-is-map": false,
+            "type": "string",
+            "description": "your appkey for accessing the url"
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": "a text query to search across urls"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": "which page of results to show"
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": "how many to show on page"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": "which field to sort by"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "url response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/url"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "appid": [],
+            "appkey": []
+          }
+        ]
+      },
+      "post": {
+        "description": "add a url",
+        "tags": [
+          "url"
+        ],
+        "operationId": "addUrl",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "appid",
+            "in": "query",
+            "required": true,
+            "x-is-map": false,
+            "type": "string",
+            "description": "your appid for accessing the url"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "required": true,
+            "x-is-map": false,
+            "type": "string",
+            "description": "your appkey for accessing the url"
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "required": true,
+            "x-is-map": false,
+            "type": "string",
+            "description": "ttle for the url"
+          },
+          {
+            "name": "content",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": "content for the url"
+          },
+          {
+            "name": "url",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": "url for the url"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "url response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/url"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "appid": [],
+            "appkey": []
+          }
+        ]
+      }
+    },
+    "/url/{url_id}/": {
+      "get": {
+        "description": "retrieve a url using its id",
+        "tags": [
+          "url"
+        ],
+        "operationId": "geturl",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "url_id",
+            "in": "path",
+            "required": true,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int64",
+            "description": "the unique id for url entry"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "required": true,
+            "x-is-map": false,
+            "type": "string",
+            "description": "your appid for accessing the url"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "required": true,
+            "x-is-map": false,
+            "type": "string",
+            "description": "your appkey for accessing the url"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "url response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/url"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "appid": [],
+            "appkey": []
+          }
+        ]
+      },
+      "put": {
+        "description": "update url",
+        "tags": [
+          "url"
+        ],
+        "operationId": "updateurl",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "url_id",
+            "in": "path",
+            "required": true,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int64",
+            "description": "the unique id for url"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "required": true,
+            "x-is-map": false,
+            "type": "string",
+            "description": "your appid for accessing the url"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "required": true,
+            "x-is-map": false,
+            "type": "string",
+            "description": "your appkey for accessing the url"
+          },
+          {
+            "name": "pull_date",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": "date the url was last pulled"
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": "ttle for the url"
+          },
+          {
+            "name": "content",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": "content of the url"
+          },
+          {
+            "name": "url",
+            "in": "query",
+            "required": false,
+            "x-is-map": false,
+            "type": "string",
+            "description": "url for the url"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "url response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/url"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "appid": [],
+            "appkey": []
+          }
+        ]
+      },
+      "delete": {
+        "description": "delete url",
+        "tags": [
+          "url"
+        ],
+        "operationId": "deleteurl",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "url_id",
+            "in": "path",
+            "required": true,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int64",
+            "description": "the unique id for url entry"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "required": true,
+            "x-is-map": false,
+            "type": "string",
+            "description": "your appid for accessing the url"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "required": true,
+            "x-is-map": false,
+            "type": "string",
+            "description": "your appkey for accessing the url"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "url response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/url"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "appid": [],
+            "appkey": []
+          }
+        ]
+      }
+    },
+    "/url/{url_id}/tags/": {
+      "get": {
+        "description": "url tags",
+        "tags": [
+          "Tags"
+        ],
+        "operationId": "geturlTags",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "url_id",
+            "in": "path",
+            "required": true,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int64",
+            "description": "id for url"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "required": true,
+            "x-is-map": false,
+            "type": "string",
+            "description": "your appid for accessing the url"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "required": true,
+            "x-is-map": false,
+            "type": "string",
+            "description": "your appkey for accessing the url"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "url Tags Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/tag"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "appid": [],
+            "appkey": []
+          }
+        ]
+      },
+      "post": {
+        "description": "add tag to url",
+        "tags": [
+          "Tags"
+        ],
+        "operationId": "addurlTag",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "url_id",
+            "in": "path",
+            "required": true,
+            "x-is-map": false,
+            "type": "integer",
+            "format": "int64",
+            "description": "id for the url"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "required": true,
+            "x-is-map": false,
+            "type": "string",
+            "description": "your appid for accessing the url"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "required": true,
+            "x-is-map": false,
+            "type": "string",
+            "description": "your appkey for accessing the url"
+          },
+          {
+            "name": "tag",
+            "in": "query",
+            "required": true,
+            "x-is-map": false,
+            "type": "string",
+            "description": "tag name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "url Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/tag"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "appid": [],
+            "appkey": []
+          }
+        ]
+      }
+    },
+    "/url/{url_id}/tags/{tag}": {
+      "delete": {
+        "description": "delete url tag",
+        "tags": [
+          "Tags"
+        ],
+        "operationId": "deleteurlTag",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "url_id",
+            "in": "path",
+            "required": true,
+            "x-is-map": false,
+            "type": "string",
+            "description": "id for the url"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "required": true,
+            "x-is-map": false,
+            "type": "string",
+            "description": "your appid for accessing the url"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "required": true,
+            "x-is-map": false,
+            "type": "string",
+            "description": "your appkey for accessing the url"
+          },
+          {
+            "name": "tag",
+            "in": "path",
+            "required": true,
+            "x-is-map": false,
+            "type": "string",
+            "description": "tag to remove from url"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "url Tag Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/tag"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "appid": [],
+            "appkey": []
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "url": {
+      "title": "url",
+      "type": "object",
+      "properties": {
+        "url_id": {
+          "description": "unique id of the url",
+          "type": "integer",
+          "format": "int64"
+        },
+        "pull_date": {
+          "description": "date the url was posted",
+          "type": "string"
+        },
+        "title": {
+          "description": "ttle for the url",
+          "type": "string"
+        },
+        "content": {
+          "description": "content of the url",
+          "type": "string"
+        },
+        "url": {
+          "description": "url for the url",
+          "type": "string"
+        }
+      }
+    },
+    "tag": {
+      "title": "tag",
+      "type": "object",
+      "properties": {
+        "tag_id": {
+          "description": "id for the tag",
+          "type": "integer",
+          "format": "int64"
+        },
+        "tag": {
+          "description": "text tag",
+          "type": "string"
+        },
+        "api_count": {
+          "description": "number of items api with tag",
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    }
+  }
+}
