@@ -1,5 +1,5 @@
 <?php
-$route = '/report/';
+$route = '/report/waiting/';
 $app->get($route, function ()  use ($app){
 
 	$ReturnObject = array();
@@ -12,7 +12,6 @@ $app->get($route, function ()  use ($app){
 	if(isset($params['sort'])){ $sort = trim(mysql_real_escape_string($params['sort'])); } else { $sort = 'Title';}
 	if(isset($params['order'])){ $order = trim(mysql_real_escape_string($params['order'])); } else { $order = 'DESC';}
 
-	// Pull from MySQL
 	$Query = "SELECT * FROM report WHERE approved = 0";
 	$Query .= " ORDER BY " . $sort . " " . $order . " LIMIT " . $page . "," . $count;
 	//echo $Query . "<br />";

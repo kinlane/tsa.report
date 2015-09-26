@@ -1,6 +1,6 @@
 <?php
 $route = '/report/:report_id/approve/';
-$app->put($route, function ($report_id) use ($app){
+$app->post($route, function ($report_id) use ($app){
 
 	$host = $_SERVER['HTTP_HOST'];
 	$report_id = prepareIdIn($report_id,$host);
@@ -17,7 +17,7 @@ $app->put($route, function ($report_id) use ($app){
 	if($Database && mysql_num_rows($Database))
 		{
 
-		$query = "UPDATE report SET approve = 1 WHERE report_id = " . $report_id;
+		$query = "UPDATE report SET approved = 1 WHERE report_id = " . $report_id;
 
 		echo $query . "<br />";
 		mysql_query($query) or die('Query failed: ' . mysql_error());
@@ -33,21 +33,6 @@ $app->put($route, function ($report_id) use ($app){
 
 	$F = array();
 	$F['report_id'] = $report_id;
-	$F['report_date'] = $report_date;
-	$F['name'] = $name;
-	$F['title'] = $title;
-	$F['content'] = $content;
-
-	$F['tags'] = array();
-
-	while ($Tag = mysql_fetch_assoc($TagResult))
-		{
-		$thistag = $Tag['tag'];
-
-		$T = array();
-		$T = $thistag;
-		array_push($F['tags'], $T);
-		}
 
 	array_push($ReturnObject, $F);
 

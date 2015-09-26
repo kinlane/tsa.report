@@ -3,6 +3,9 @@
 require_once('m-report-get.php');
 require_once('m-report-post.php');
 
+require_once('m-report-waiting-get.php');
+require_once('m-report-report_id-approve-post.php');
+
 require_once('m-report-tags-get.php');
 require_once('m-report-tags-tag-delete.php');
 
