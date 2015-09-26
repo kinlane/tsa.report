@@ -251,13 +251,6 @@
             "description": "content of the report",
             "required": false,
             "type": "string"
-          },
-          {
-            "name": "Reports",
-            "in": "query",
-            "description": "report for the report",
-            "required": false,
-            "type": "string"
           }
         ],
         "responses": {
@@ -314,6 +307,59 @@
         "responses": {
           "200": {
             "description": "report response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/report"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Reports"
+        ],
+        "security": [
+          {
+            "appid": []
+          },
+          {
+            "appkey": []
+          }
+        ]
+      }
+    },
+    "/report/{report_id}/approve/": {
+      "post": {
+        "summary": "approve report",
+        "description": "approve report",
+        "operationId": "approveReport",
+        "parameters": [
+          {
+            "name": "report_id",
+            "in": "path",
+            "description": "the unique id for report",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "description": "your appid for accessing the report",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the report",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "approve report response",
             "schema": {
               "type": "array",
               "items": {
@@ -536,10 +582,6 @@
         },
         "content": {
           "description": "content of the report",
-          "type": "string"
-        },
-        "Reports": {
-          "description": "report for the report",
           "type": "string"
         }
       }
