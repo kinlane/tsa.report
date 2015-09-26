@@ -26,19 +26,19 @@
       "properties": [
         {
           "type": "Swagger",
-          "report": "http://developer.tsa.report/swagger.json"
+          "url": "http://developer.tsa.report/swagger.json"
         },
         {
           "type": "Blueprint",
-          "report": "http://developer.tsa.report/report.apib"
+          "url": "http://developer.tsa.report/report.apib"
         },
         {
           "type": "x-postman",
-          "report": "http://developer.tsa.report/postman.json"
+          "url": "http://developer.tsa.report/postman.json"
         },
         {
           "type": "x-api-science",
-          "report": "http://developer.tsa.report/status/"
+          "url": "http://developer.tsa.report/status/"
         }
       ],
       "contact": [
