@@ -9,14 +9,14 @@
   ],
   "created": "2015-09-25",
   "modified": "2015-09-25",
-  "report": "http://developer.tsa.report/apis.json",
+  "url": "http://developer.tsa.report/apis.json",
   "SpecificationVersion": "0.14",
   "apis": [
     {
       "name": "TSA.Report",
       "description": "The API for TSA.Report",
       "image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-tsa-report.png",
-      "humanURL": "http://developer.tsa.report",
+      "humanURL": "http://developer.tsa.report/",
       "baseURL": "http://api.tsa.report",
       "tags": [
         "API",
