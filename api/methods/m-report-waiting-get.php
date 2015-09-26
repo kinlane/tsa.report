@@ -7,21 +7,13 @@ $app->get($route, function ()  use ($app){
  	$request = $app->request();
  	$params = $request->params();
 
-	if(isset($params['query'])){ $query = trim(mysql_real_escape_string($params['query'])); } else { $query = '';}
 	if(isset($params['page'])){ $page = trim(mysql_real_escape_string($params['page'])); } else { $page = 0;}
 	if(isset($params['count'])){ $count = trim(mysql_real_escape_string($params['count'])); } else { $count = 250;}
 	if(isset($params['sort'])){ $sort = trim(mysql_real_escape_string($params['sort'])); } else { $sort = 'Title';}
 	if(isset($params['order'])){ $order = trim(mysql_real_escape_string($params['order'])); } else { $order = 'DESC';}
 
 	// Pull from MySQL
-	if($query!='')
-		{
-		$Query = "SELECT * FROM report WHERE approved = 1 AND name LIKE '%" . $query . "%' OR title LIKE '%" . $query . "%' OR content LIKE '%" . $query . "%'";
-		}
-	else
-		{
-		$Query = "SELECT * FROM report WHERE approved = 1";
-		}
+	$Query = "SELECT * FROM report WHERE approved = 0";
 	$Query .= " ORDER BY " . $sort . " " . $order . " LIMIT " . $page . "," . $count;
 	//echo $Query . "<br />";
 
