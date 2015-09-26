@@ -1,5 +1,5 @@
 {
-  "name": "Kin Lane - report",
+  "name": "Kin Lane - Report",
   "description": "This is a project I came up with during my travels, allowing anyone to report any thought while in the TSA line.",
   "image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-tsa-report.png",
   "tags": [
@@ -30,7 +30,7 @@
         },
         {
           "type": "Blueprint",
-          "report": "http://developer.tsa.report/tsareport.apib"
+          "report": "http://developer.tsa.report/report.apib"
         },
         {
           "type": "x-postman",
